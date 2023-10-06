@@ -1,0 +1,42 @@
+<div>
+    <nav class="d-flex justify-content-end">
+        
+        <a routerLink="/create/flight" class="btn btn-primary btn-sm">Create</a>
+        <span class="mx-2"></span>
+        
+        <a routerLink="/listBookings" class="btn btn-primary btn-sm">Your Bookings</a>
+        <span class="mx-2"></span> 
+        
+        <a routerLink="/home" class="btn btn-danger btn-sm">Logout</a>
+        <span class="mx-2"></span>
+    </nav>
+  </div>
+  <div class="container">
+      <h2>Current Flights</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Fare</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flight of flights">
+            <td>{{ flight.name }}</td>
+            <td>{{ flight.src }}</td>
+            <td>{{ flight.dest }}</td>
+            <td>{{ flight.fare | currency }}</td> 
+            <td>
+              <button class="btn btn-danger" (click)="delete(flight.id)">Delete</button>
+              <span class="mx-2"></span>
+              <button class="btn btn-primary" (click)="update(flight.id)">Update</button>
+              <span class="mx-2"></span>
+              <button class="btn btn-primary" (click)="book(flight.id)">Book</button>
+            </td>            
+          </tr>
+        </tbody>
+      </table>
+    </div>

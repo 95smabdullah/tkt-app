@@ -1,0 +1,46 @@
+<div>
+    <nav class="d-flex justify-content-end">
+        <a routerLink="/listFlights" class="btn btn-primary btn-sm">Back to Flights</a>
+        <span class="mx-2"></span> 
+
+        <a routerLink="/listBookings" class="btn btn-primary btn-sm">Your Bookings</a>
+        <span class="mx-2"></span> 
+        
+        <a routerLink="/home" class="btn btn-danger btn-sm">Logout</a>
+        <span class="mx-2"></span>
+    </nav>
+</div>
+<div class="container">
+    <h3>Update Flight</h3>
+    <form (ngSubmit)="flightForm.form.valid && update()" #flightForm="ngForm" >
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="flightRequest.name" class="form-control" #name="ngModel" [ngClass]="{'is-invalid':flightForm.submitted && name.invalid}" required>
+            <div class="invalid-feedback" *ngIf="flightForm.submitted && name.invalid">
+                <p *ngIf="name.errors && name.errors['required']" class="text-danger">Name is Required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="src">Source:</label>
+            <input type="text" id="src" name="src" [(ngModel)]="flightRequest.src" class="form-control" #src="ngModel" [ngClass]="{'is-invalid':flightForm.submitted && src.invalid}" required>
+            <div class="invalid-feedback" *ngIf="flightForm.submitted && src.invalid">
+                <p *ngIf="src.errors && src.errors['required']" class="text-danger">Source is Required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dest">Destination:</label>
+            <input type="text" id="dest" name="dest" [(ngModel)]="flightRequest.dest" class="form-control" #dest="ngModel" [ngClass]="{'is-invalid':flightForm.submitted && dest.invalid}" required>
+            <div class="invalid-feedback" *ngIf="flightForm.submitted && dest.invalid">
+                <p *ngIf="dest.errors && dest.errors['required']" class="text-danger">Destination is Required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="fare">Fare:</label>
+            <input type="number" id="fare" name="fare" [(ngModel)]="flightRequest.fare" class="form-control" #fare="ngModel" [ngClass]="{'is-invalid':flightForm.submitted && fare.invalid}" required>
+            <div class="invalid-feedback" *ngIf="flightForm.submitted && fare.invalid">
+                <p *ngIf="fare.errors && fare.errors['required']" class="text-danger">Fare is Required</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

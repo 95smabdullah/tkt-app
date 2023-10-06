@@ -1,0 +1,36 @@
+<div>
+    <nav class="d-flex justify-content-end">
+        
+        <a routerLink="/listFlights" class="btn btn-primary btn-sm">Back to Flights</a>
+        <span class="mx-2"></span>
+        
+        <a routerLink="/home" class="btn btn-danger btn-sm">Logout</a>
+        <span class="mx-2"></span>
+    </nav>
+  </div>
+  <div class="container">
+      <h2>Your Bookingd</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Fare</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of bookings">
+            <td>{{ booking.flightResponse.name }}</td>
+            <td>{{ booking.flightResponse.src }}</td>
+            <td>{{ booking.flightResponse.dest }}</td>
+            <td>{{ booking.flightResponse.fare | currency }}</td> 
+            <td>
+              <button class="btn btn-danger" (click)="delete(booking.id)">Delete</button>
+              <span class="mx-2"></span>
+            </td>            
+          </tr>
+        </tbody>
+      </table>
+    </div>
